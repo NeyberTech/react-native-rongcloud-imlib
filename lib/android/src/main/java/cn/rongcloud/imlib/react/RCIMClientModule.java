@@ -54,7 +54,9 @@ public class RCIMClientModule extends ReactContextBaseJavaModule {
         RongIMClient.setConnectionStatusListener(new ConnectionStatusListener() {
             @Override
             public void onChanged(ConnectionStatus status) {
+              if (status) {
                 eventEmitter.emit("rcimlib-connection-status", status.getValue());
+              }
             }
         });
 
